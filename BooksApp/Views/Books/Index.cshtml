@@ -20,21 +20,21 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var skill in Model)
+        @foreach (var book in Model)
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => skill.Name)
+                    @Html.DisplayFor(modelItem => book.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => skill.Author)
+                    @Html.DisplayFor(modelItem => book.Author)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => skill.Year)
+                    @Html.DisplayFor(modelItem => book.Year)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@skill.Id" class="btn btn-warning">Edit</a> |
-                    <a asp-action="Delete" asp-route-id="@skill.Id" class="btn btn-danger">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@book.Id" class="btn btn-warning">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@book.Id" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
         }

@@ -41,7 +41,7 @@ namespace BooksApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                _booksService.AddBook(new Book
+                _booksService.AddBook(new FictionBook
                 {
                     Id = book.Id,
                     Name = book.Name,

@@ -2,7 +2,7 @@
 
 namespace BooksApp.Domain.Entities
 {
-    public class Book
+    public abstract class Book
     {
         [Key]
         public int Id { get; set; }

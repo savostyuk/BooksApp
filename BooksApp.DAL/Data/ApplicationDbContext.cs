@@ -10,17 +10,44 @@ public class ApplicationDbContext: DbContext
 
     }
 
-    public DbSet<Book> Book {  get; set; }
+    public DbSet<Book> Books { get; set; }
+    public DbSet<EducationalBook> EducationalBooks { get; set; }
+    public DbSet<FictionBook> FictionBooks { get; set; }
+    public DbSet<Publisher> Publishers { get; set; }
+    public DbSet<PublisherBook> PublisherBooks { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
 
-        // Add seed data for Books table.
-        modelBuilder.Entity<Book>().HasData(
-            new Book { Id = 1, Name = "First book", Author = "Roman", Year = 2010},
-            new Book { Id = 2, Name = "Second book", Author = "Natalya", Year = 2020 },
-            new Book { Id = 3, Name = "Third book", Author = "Anton", Year = 2021 }
-        );
+        modelBuilder.Entity<FictionBook>()
+            .ToTable("FictionBooks")
+            .HasBaseType<Book>() // Specifies that FictionBook inherits from Book
+            .HasOne<Book>()
+            .WithMany()
+            .HasForeignKey(fb => fb.Id);
+
+        modelBuilder.Entity<EducationalBook>()
+            .ToTable("EducationalBooks")
+            .HasBaseType<Book>() // Specifies that EducationalBook inherits from Book
+            .HasOne<Book>()
+            .WithMany()
+            .HasForeignKey(eb => eb.Id);
+
+        modelBuilder.Entity<PublisherBook>()
+            .HasKey(pb => pb.Id);
+
+        //many-to-many
+        modelBuilder.Entity<PublisherBook>()
+            .HasOne(pb => pb.Publisher)
+            .WithMany(p => p.PublisherBooks)
+            .HasForeignKey(pb => pb.PublisherId);
+
+        modelBuilder.Entity<PublisherBook>()
+            .HasOne(pb => pb.Book)
+            .WithMany()
+            .HasForeignKey(pb => pb.BookId);
+
+        DbInitializer.SeedData(modelBuilder);
     }
 }

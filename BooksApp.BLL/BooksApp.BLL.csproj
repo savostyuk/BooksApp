@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BooksApp.DAL\BooksApp.DAL.csproj" />
     <ProjectReference Include="..\BooksApp.Domain\BooksApp.Domain.csproj" />
   </ItemGroup>
 
