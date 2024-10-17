@@ -1,0 +1,50 @@
+﻿@model BooksApp.Domain.Entities.EducationalBook
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Educational Book</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Author)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Author)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Year)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Year)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Speciality)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Speciality)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Level)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Level)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <input type="button" onclick="location.href='@Url.Action("Index")'" value="Cancel" class="btn" />
+    </form>
+</div>
