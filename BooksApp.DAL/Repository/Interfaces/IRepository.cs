@@ -1,4 +1,4 @@
-﻿namespace BooksApp.DAL.Repository;
+﻿namespace BooksApp.DAL.Repository.Interfaces;
 
 public interface IRepository<T> where T : class
 {

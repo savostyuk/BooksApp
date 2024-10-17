@@ -26,8 +26,4 @@
     <ProjectReference Include="..\BooksApp.Domain\BooksApp.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Publishers\" />
-  </ItemGroup>
-
 </Project>

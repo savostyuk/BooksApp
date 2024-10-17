@@ -1,6 +1,6 @@
 ﻿using BooksApp.BLL.Interfaces;
 using BooksApp.Domain.Entities;
-using BooksApp.DAL.Repository;
+using BooksApp.DAL.Repository.Interfaces;
 namespace BooksApp.BLL.Services;
 
 public class FictionBookService : IBooksService<FictionBook>

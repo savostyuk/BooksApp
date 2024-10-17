@@ -4,6 +4,7 @@ using BooksApp.DAL.Repository;
 using BooksApp.BLL.Interfaces;
 using BooksApp.Domain.Entities;
 using BooksApp.BLL.Services;
+using BooksApp.DAL.Repository.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +19,7 @@ builder.Services.AddScoped<IFictionBooksRepository, FictionBooksRepository>();
 builder.Services.AddScoped<IPublisherRepository, PublisherRepository>();
 builder.Services.AddScoped<IBooksService<EducationalBook>, EducationalBooksService>();
 builder.Services.AddScoped<IBooksService<FictionBook>, FictionBookService>();
+builder.Services.AddScoped<IPublishersService<Publisher>, PublishersService>();
 
 var app = builder.Build();
 

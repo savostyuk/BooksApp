@@ -1,5 +1,5 @@
 ﻿using BooksApp.BLL.Interfaces;
-using BooksApp.DAL.Repository;
+using BooksApp.DAL.Repository.Interfaces;
 using BooksApp.Domain.Entities;
 
 namespace BooksApp.BLL.Services;

@@ -1,4 +1,6 @@
-﻿using BooksApp.DAL.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using BooksApp.DAL.Data;
+using BooksApp.DAL.Repository.Interfaces;
 using BooksApp.Domain.Entities;
 
 namespace BooksApp.DAL.Repository
@@ -12,6 +14,24 @@ namespace BooksApp.DAL.Repository
         }
         public async Task UpdateAsync(Publisher entity)
         {
+            var originalEntity = await _context.Publishers
+           .Include(p => p.Books)
+           .FirstOrDefaultAsync(u => u.Id == entity.Id);
+
+            if (originalEntity != null)
+            {
+                originalEntity.Name = entity.Name;
+                originalEntity.Country = entity.Country;
+
+                originalEntity.Books.Clear();
+
+                foreach (var book in entity.Books)
+                {
+                    originalEntity.Books.Add(book);
+                }
+
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }
