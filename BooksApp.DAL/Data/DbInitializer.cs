@@ -69,32 +69,5 @@ public class DbInitializer
 
             }
         );
-
-        modelBuilder.Entity<PublisherBook>().HasData(
-           new PublisherBook
-           {
-               Id = 1,
-               PublisherId = 1,
-               BookId = 1 
-           },
-           new PublisherBook
-           {
-               Id = 2,
-               PublisherId = 1,
-               BookId = 2
-           },
-           new PublisherBook
-           {
-               Id = 3,
-               PublisherId = 2,
-               BookId = 3
-           },
-           new PublisherBook
-           {
-               Id = 4,
-               PublisherId = 2,
-               BookId = 4
-           }
-       );
     }
 }

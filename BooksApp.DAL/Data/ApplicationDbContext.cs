@@ -14,7 +14,6 @@ public class ApplicationDbContext: DbContext
     public DbSet<EducationalBook> EducationalBooks { get; set; }
     public DbSet<FictionBook> FictionBooks { get; set; }
     public DbSet<Publisher> Publishers { get; set; }
-    public DbSet<PublisherBook> PublisherBooks { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -34,19 +33,19 @@ public class ApplicationDbContext: DbContext
             .WithMany()
             .HasForeignKey(eb => eb.Id);
 
-        modelBuilder.Entity<PublisherBook>()
+        modelBuilder.Entity<Publisher>()
+            .ToTable("Publishers")
             .HasKey(pb => pb.Id);
 
         //many-to-many
-        modelBuilder.Entity<PublisherBook>()
-            .HasOne(pb => pb.Publisher)
-            .WithMany(p => p.PublisherBooks)
-            .HasForeignKey(pb => pb.PublisherId);
+        modelBuilder.Entity<Book>()
+            .ToTable("Books")
+            .HasKey(b => b.Id);
 
-        modelBuilder.Entity<PublisherBook>()
-            .HasOne(pb => pb.Book)
+        modelBuilder.Entity<Publisher>()
+            .HasMany(b  => b.Books)
             .WithMany()
-            .HasForeignKey(pb => pb.BookId);
+            .UsingEntity(i => i.ToTable("PublisherBooks"));
 
         DbInitializer.SeedData(modelBuilder);
     }

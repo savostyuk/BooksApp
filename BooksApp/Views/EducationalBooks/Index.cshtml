@@ -1,0 +1,58 @@
+﻿@model List<BooksApp.Domain.Entities.EducationalBook>
+
+@{
+    ViewBag.Title = "Educational Book Details";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Speciality)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Level)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => book.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => book.Author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => book.Year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => book.Speciality)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => book.Level)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@book.Id" class="btn btn-warning">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@book.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Add New Book</a>
+</p>

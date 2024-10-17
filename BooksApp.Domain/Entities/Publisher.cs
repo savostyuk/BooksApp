@@ -10,6 +10,6 @@ public class Publisher
     public int Id { get; set; }
     public string Name { get; set; }
     public string Country { get; set; }
-    public ICollection<PublisherBook> PublisherBooks { get; set; } = new List<PublisherBook>();
+    public ICollection<Book> Books { get; set; } = [];
 
 }
