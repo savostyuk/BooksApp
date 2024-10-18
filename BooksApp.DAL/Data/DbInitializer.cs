@@ -48,7 +48,7 @@ public class DbInitializer
                 Author = "Mister Bean",
                 Year = 2005,
                 Speciality = "Psycology",
-                Level = "Childrren"
+                Level = "Children"
 
             }
         );

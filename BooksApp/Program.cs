@@ -5,6 +5,8 @@ using BooksApp.BLL.Interfaces;
 using BooksApp.Domain.Entities;
 using BooksApp.BLL.Services;
 using BooksApp.DAL.Repository.Interfaces;
+using FluentValidation;
+using BooksApp.BLL.Validators;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +22,8 @@ builder.Services.AddScoped<IPublisherRepository, PublisherRepository>();
 builder.Services.AddScoped<IBooksService<EducationalBook>, EducationalBooksService>();
 builder.Services.AddScoped<IBooksService<FictionBook>, FictionBookService>();
 builder.Services.AddScoped<IPublishersService<Publisher>, PublishersService>();
+builder.Services.AddScoped<IValidator<EducationalBook>, EducationalBookValidator>();
+builder.Services.AddScoped<IValidator<FictionBook>, FictionBookValidator>();
 
 var app = builder.Build();
 

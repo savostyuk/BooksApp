@@ -1,6 +1,7 @@
 ﻿using BooksApp.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using BooksApp.BLL.Interfaces;
+using FluentValidation;
 
 namespace BooksApp.Web.Controllers;
 
@@ -8,10 +9,12 @@ public class EducationalBooksController : Controller
 {
 
     private readonly IBooksService<EducationalBook> _booksService;
+    private readonly IValidator<EducationalBook> _validator;
 
-    public EducationalBooksController (IBooksService<EducationalBook> booksService)
+    public EducationalBooksController (IBooksService<EducationalBook> booksService, IValidator<EducationalBook> validator)
     {
         _booksService = booksService;
+        _validator = validator;
     }
 
     public async Task<IActionResult> Index()
@@ -35,12 +38,21 @@ public class EducationalBooksController : Controller
     [HttpPost]
     public async Task<IActionResult> Create(EducationalBook book)
     {
-        if (ModelState.IsValid)
+        var result = await _validator.ValidateAsync(book);
+
+        if (!result.IsValid)
         {
-            await _booksService.CreateAsync(book);
-            return RedirectToAction(nameof(Index));
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+            }
+
+            return View(book);
         }
-        return View(book);
+
+        await _booksService.CreateAsync(book);
+        return RedirectToAction(nameof(Index));
+
     }
     public async Task<IActionResult> Edit(int id)
     {
