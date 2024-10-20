@@ -38,6 +38,7 @@ public class EducationalBooksController : Controller
             return StatusCode(500, "An error occurred");
         }
     }
+
     public async Task<IActionResult> Details(int id)
     {
         _logger.LogInformation($"Entering Details() method with id {id}");
@@ -49,28 +50,33 @@ public class EducationalBooksController : Controller
             if (book == null)
             {
                 _logger.LogWarning($"Book with id {id} not found in Details()");
+
                 return NotFound();
             }
 
             _logger.LogInformation($"Successfully retrieved book with id {id} in Details()");
+
             return View(book);
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, $"Error occurred in Details() with id {id}");
+
             return StatusCode(500, "An error occurred");
         }
-
     }
     public IActionResult Create()
     {
         _logger.LogInformation("Entering Create() GET method");
+
         return View();
     }
+
     [HttpPost]
     public async Task<IActionResult> Create(EducationalBook book)
     {
         _logger.LogInformation("Entering Create() POST method");
+
         var result = await _validator.ValidateAsync(book);
 
         if (!result.IsValid)
@@ -90,16 +96,17 @@ public class EducationalBooksController : Controller
         {
             await _booksService.CreateAsync(book);
             _logger.LogInformation("Successfully created a book in Create() POST method");
+
             return RedirectToAction(nameof(Index));
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error occurred in Create() POST method");
+
             return StatusCode(500, "An error occurred");
         }
-
-
     }
+
     public async Task<IActionResult> Edit(int id)
     {
         _logger.LogInformation($"Entering Edit() GET method with id {id}");
@@ -111,6 +118,7 @@ public class EducationalBooksController : Controller
             if (book == null)
             {
                 _logger.LogWarning($"Book with id {id} not found in Edit() GET method");
+
                 return NotFound();
             }
             return View(book);
@@ -118,10 +126,11 @@ public class EducationalBooksController : Controller
         catch (Exception ex) 
         {
             _logger.LogError(ex, $"Error occurred in Edit() GET method with id {id}");
+
             return StatusCode(500, "An error occurred");
         }
-
     }
+
     [HttpPost]
     public async Task<IActionResult> Edit(int id, EducationalBook book)
     {
@@ -130,6 +139,7 @@ public class EducationalBooksController : Controller
         if (id != book.Id)
         {
             _logger.LogWarning("Book id mismatch in Edit() POST method");
+
             return BadRequest();
         }
         if (ModelState.IsValid)
@@ -138,18 +148,22 @@ public class EducationalBooksController : Controller
             {
                 await _booksService.UpdateAsync(book);
                 _logger.LogInformation($"Successfully updated book with id {id} in Edit() POST method");
+
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"Error occurred while updating book with id {id} in Edit() POST method");
+
                 return StatusCode(500, "An error occurred");
             }
         }
 
         _logger.LogWarning($"ModelState is invalid in Edit() POST method with id {id}");
+
         return View(book);
     }
+
     public async Task<IActionResult> Delete(int id)
     {
         _logger.LogInformation($"Entering Delete() GET method with id {id}");
@@ -169,11 +183,11 @@ public class EducationalBooksController : Controller
         catch (Exception ex)
         {
             _logger.LogError(ex, $"Error occurred in Delete() GET method with id {id}");
-            return StatusCode(500, "An error occurred");
 
+            return StatusCode(500, "An error occurred");
         }
- 
     }
+
     [HttpPost]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
@@ -183,11 +197,13 @@ public class EducationalBooksController : Controller
         {
             await _booksService.DeleteAsync(id);
             _logger.LogInformation($"Successfully deleted book with id {id} in DeleteConfirmed() POST method");
+
             return RedirectToAction(nameof(Index));
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, $"Error occurred while deleting book with id {id} in DeleteConfirmed() POST method");
+
             return StatusCode(500, "An error occurred");
         }
     }
