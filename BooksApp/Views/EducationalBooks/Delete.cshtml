@@ -43,8 +43,8 @@
         </dd>
     </dl>
     
-    <form asp-action="Delete">
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
+    <form method="post" asp-action="DeleteConfirmed" asp-route-id="@Model.Id">
+        <button type="submit" class="btn btn-danger">Delete</button> |
         <input type="button" onclick="location.href='@Url.Action("Index")'" value="Cancel" class="btn" />
     </form>
 </div>
