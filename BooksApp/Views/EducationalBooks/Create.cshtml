@@ -37,8 +37,9 @@
                 <input asp-for="Level" class="form-control" />
                 <span asp-validation-for="Level" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary btn-outline-success" />
                 <input type="button" onclick="location.href='@Url.Action("Index")'" value="Cancel" class="btn" />
             </div>
         </form>

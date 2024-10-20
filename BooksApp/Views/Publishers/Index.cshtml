@@ -21,7 +21,7 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => publisher.Name)
+                    @Html.ActionLink(publisher.Name, "GetBooks", "Publishers", new { id = publisher.Id }, null)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => publisher.Country)

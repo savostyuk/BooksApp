@@ -1,0 +1,31 @@
+﻿﻿@{
+    ViewBag.Title = "Details for book of publisher with ID " + ViewBag.Id;
+}
+
+<h2>Details for book of publisher with ID @ViewBag.Id</h2>
+
+@if (ViewBag.FoundBooks.Count > 0)
+
+{
+    <h3>Found books:</h3>
+    <ul>
+        @foreach (var book in ViewBag.FoundBooks)
+
+        {
+            <li>@book</li>
+        }
+    </ul>
+}
+
+@if (ViewBag.NotFoundBooks.Count > 0)
+
+{
+    <h3>Books not found:</h3>
+    <ul>
+        @foreach (var book in ViewBag.NotFoundBooks)
+
+        {
+            <li>@book</li>
+        }
+    </ul>
+}

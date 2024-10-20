@@ -1,0 +1,13 @@
+﻿﻿@{
+    ViewBag.Title = "Books of publisher with ID " + ViewBag.Id;
+}
+
+<h2>Books of publisher with ID @ViewBag.Id</h2>
+
+<ul>
+    @foreach (var book in ViewBag.Books)
+
+    {
+        <li>@book</li>
+    }
+</ul>

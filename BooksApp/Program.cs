@@ -52,6 +52,12 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllerRoute(
+    name: "publishers",
+    pattern: "publishers/{id}/{*books}",
+    defaults: new { controller = "Publishers", action = "GetBooks" }
+    );
+
+app.MapControllerRoute(
     name: "default",
     pattern: "{controller=FictionBooks}/{action=Index}/{id?}");
 
