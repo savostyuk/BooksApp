@@ -15,7 +15,7 @@ public class EducationalBookValidator : AbstractValidator<EducationalBook>
         RuleFor(x => x.Year)
             .GreaterThanOrEqualTo(0).WithMessage("The Year must be a valid positive number."); ;
         RuleFor(x => x.Speciality)
-            .Length(10, 100).WithMessage("The Speciality must be from 10 to 100 characters.");
+            .Length(5, 100).WithMessage("The Speciality must be from 5 to 100 characters.");
         RuleFor(x => x.Level)
             .MaximumLength(50).WithMessage("The Author name cannot exceed 50 characters.");
     }
