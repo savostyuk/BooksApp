@@ -4,6 +4,12 @@
     ViewBag.Title = "Fiction Book Details";
 }
 
+<ol class="breadcrumb">
+    <li class="breadcrumb-item active">Fiction books</li>
+</ol>
+
+<h4 class="text-center my-3">List of Fiction Books</h4>
+
 <table class="table table-hover">
     <thead>
         <tr class="table-primary">
@@ -26,11 +32,12 @@
         </tr>
     </thead>
     <tbody>
+
         @foreach (var book in Model)
         {
             <tr class="table-secondary">
                 <td>
-                    @Html.DisplayFor(modelItem => book.Name)
+                    <strong>@Html.DisplayFor(modelItem => book.Name)</strong>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => book.Author)

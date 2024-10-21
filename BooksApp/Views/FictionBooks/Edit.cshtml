@@ -4,10 +4,13 @@
     ViewData["Title"] = "Edit book";
 }
 
-<h1>Edit</h1>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="@Url.Action("Index")">Fiction books</a></li>
+    <li class="breadcrumb-item active">Edit</li>
+</ol>
 
-<h4>Fiction Book</h4>
-<hr />
+<h4>Edit Fiction Book</h4>
+
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
@@ -37,8 +40,9 @@
                 <input asp-for="AgeRestrictions" class="form-control" />
                 <span asp-validation-for="AgeRestrictions" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-outline-success" />
                 <input type="button" onclick="location.href='@Url.Action("Index")'" value="Cancel" class="btn" />
             </div>
         </form>

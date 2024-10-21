@@ -22,6 +22,7 @@ namespace BooksApp.DAL.Repository
             {
                 originalEntity.Name = entity.Name;
                 originalEntity.Country = entity.Country;
+                originalEntity.Email = entity.Email;
 
                 originalEntity.Books.Clear();
 

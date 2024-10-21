@@ -97,6 +97,7 @@ public class EducationalBooksController : Controller
             await _booksService.CreateAsync(book);
             _logger.LogInformation("Successfully created a book in Create() POST method");
 
+            TempData["SuccessMessage"] = "Data saved successfully!";
             return RedirectToAction(nameof(Index));
         }
         catch (Exception ex)
@@ -149,6 +150,7 @@ public class EducationalBooksController : Controller
                 await _booksService.UpdateAsync(book);
                 _logger.LogInformation($"Successfully updated book with id {id} in Edit() POST method");
 
+                TempData["SuccessMessage"] = "Data saved successfully!";
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
@@ -198,6 +200,7 @@ public class EducationalBooksController : Controller
             await _booksService.DeleteAsync(id);
             _logger.LogInformation($"Successfully deleted book with id {id} in DeleteConfirmed() POST method");
 
+            TempData["SuccessMessage"] = "Data saved successfully!";
             return RedirectToAction(nameof(Index));
         }
         catch (Exception ex)

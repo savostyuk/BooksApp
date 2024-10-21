@@ -42,6 +42,7 @@ public class FictionBooksController : Controller
         if (ModelState.IsValid)
         {
             await _booksService.CreateAsync(book);
+            TempData["SuccessMessage"] = "Data saved successfully!";
 
             return RedirectToAction(nameof(Index));
         }
@@ -69,6 +70,7 @@ public class FictionBooksController : Controller
         if (ModelState.IsValid)
         {
             await _booksService.UpdateAsync(book);
+            TempData["SuccessMessage"] = "Data saved successfully!";
 
             return RedirectToAction(nameof(Index));
         }
@@ -90,6 +92,7 @@ public class FictionBooksController : Controller
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
         await _booksService.DeleteAsync(id);
+        TempData["SuccessMessage"] = "Data saved successfully!";
 
         return RedirectToAction(nameof(Index));
     }

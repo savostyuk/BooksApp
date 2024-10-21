@@ -2,30 +2,55 @@
     ViewBag.Title = "Details for book of publisher with ID " + ViewBag.Id;
 }
 
-<h2>Details for book of publisher with ID @ViewBag.Id</h2>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="@Url.Action("Index")">Publishers</a></li>
+    <li class="breadcrumb-item"><a href="@Url.Action("GetBooks", "Publishers", new { id = ViewBag.Id })">@ViewBag.Id</a></li>
+    <li class="breadcrumb-item active">Details</li>
+</ol>
 
-@if (ViewBag.FoundBooks.Count > 0)
+<h4 class="text-center">Search books by publisher with ID @ViewBag.Id</h4>
 
-{
-    <h3>Found books:</h3>
-    <ul>
-        @foreach (var book in ViewBag.FoundBooks)
+<div class="accordion" id="accordion">
 
-        {
-            <li>@book</li>
-        }
-    </ul>
-}
+    @if (ViewBag.FoundBooks.Count > 0)
+    {
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Found books
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordion" style="">
+                <div class="accordion-body">
+                    <ul>
+                    @foreach (var book in ViewBag.FoundBooks)
+                    {
+                        <li class="list-group-item list-group-item-success">@book</li>
+                    }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    }
 
-@if (ViewBag.NotFoundBooks.Count > 0)
-
-{
-    <h3>Books not found:</h3>
-    <ul>
-        @foreach (var book in ViewBag.NotFoundBooks)
-
-        {
-            <li>@book</li>
-        }
-    </ul>
-}
+    @if (ViewBag.NotFoundBooks.Count > 0)
+    {
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Books not found
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordion" style="">
+                <div class="accordion-body">
+                    <ul>
+                        @foreach (var book in ViewBag.NotFoundBooks)
+                        {
+                            <li class="list-group-item list-group-item-danger">@book</li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    }
+</div>

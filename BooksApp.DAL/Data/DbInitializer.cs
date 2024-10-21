@@ -58,7 +58,8 @@ public class DbInitializer
             {
                 Id = 1,
                 Name = "Ad Press",
-                Country = "Belarus"
+                Country = "Belarus",
+                Email = "ad_press@gmail.com",
 
             },
             new Publisher
@@ -66,7 +67,7 @@ public class DbInitializer
                 Id = 2,
                 Name = "Academic Studies",
                 Country = "Poland",
-
+                Email = "academic_studies@gmail.com",
             }
         );
     }

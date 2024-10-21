@@ -2,12 +2,16 @@
     ViewBag.Title = "Books of publisher with ID " + ViewBag.Id;
 }
 
-<h2>Books of publisher with ID @ViewBag.Id</h2>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="@Url.Action("Index")">Publishers</a></li>
+    <li class="breadcrumb-item active">@ViewBag.Id</li>
+</ol>
 
-<ul>
+<h4 class="text-center">Books of publisher with ID @ViewBag.Id</h4>
+
+<ul class="list-group">
     @foreach (var book in ViewBag.Books)
-
     {
-        <li>@book</li>
+        <li class="list-group-item list-group-item-primary d-flex justify-content-between align-items-center">@book</li>
     }
 </ul>

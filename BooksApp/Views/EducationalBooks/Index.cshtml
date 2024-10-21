@@ -4,6 +4,12 @@
     ViewBag.Title = "Educational Book Details";
 }
 
+<ol class="breadcrumb">
+    <li class="breadcrumb-item active">Educational books</li>
+</ol>
+
+<h3 class="text-center my-3">List of Educational Books</h3>
+
 <table class="table table-hover">
     <thead>
         <tr class="table-primary">
@@ -26,11 +32,12 @@
         </tr>
     </thead>
     <tbody>
+
         @foreach (var book in Model)
         {
             <tr class="table-secondary">
                 <td>
-                    @Html.DisplayFor(modelItem => book.Name)
+                    <strong>@Html.DisplayFor(modelItem => book.Name)</strong>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => book.Author)
@@ -45,7 +52,7 @@
                     @Html.DisplayFor(modelItem => book.Level)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@book.Id" class="btn btn-outline-warning btn-sm">Edit</a> 
+                    <a asp-action="Edit" asp-route-id="@book.Id" class="btn btn-outline-warning btn-sm">Edit</a>
                     <a asp-action="Delete" asp-route-id="@book.Id" class="btn btn-outline-danger btn-sm">Delete</a>
                 </td>
             </tr>
